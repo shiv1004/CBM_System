@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>CBM SCADA Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="modal-overlay" id="provisionModal">
+    <div class="modal-box">
+      <h3>Register New Switchgear</h3>
+      <label>Location / Panel Name</label>
+      <input type="text" id="inputName" placeholder="e.g., Courtyard Panel B">
+      <label>Device ID / ESP32 MAC Address</label>
+      <input type="text" id="inputMac" placeholder="e.g., 24:0A:C4:XX:XX:XX">
+      <div class="btn-row">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="add-btn" onclick="submitNewPanel()">Deploy Node</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="chartModal">
+    <div class="modal-box" style="width: 90%; max-width: 800px;">
+      <div class="chart-header-row">
+        <h3 id="chartTitle" style="margin-top:0; margin-bottom:0;">Sensor Trend</h3>
+        <div class="timeframe-selector">
+          <button class="tf-btn active" id="btn-1m" onclick="setTimeframe('1m')">1M</button>
+          <button class="tf-btn" id="btn-5m" onclick="setTimeframe('5m')">5M</button>
+          <button class="tf-btn" id="btn-15m" onclick="setTimeframe('15m')">15M</button>
+        </div>
+      </div>
+      <canvas id="sensorChart" height="100"></canvas>
+      <div style="text-align: right; margin-top: 15px;">
+        <button class="btn-cancel" onclick="closeChart()">Close Panel</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <h1>CBM SCADA SYSTEM</h1>
+    <button class="add-btn" onclick="openModal()">+ Add Panel</button>
+  </header>
+
+  <div class="dashboard-container" id="overview-view">
+    <h2 style="color: var(--text-muted); margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">Fleet Overview</h2>
+    <div class="overview-grid" id="overview-grid">
+      </div>
+  </div>
+
+  <div class="dashboard-container" id="detail-view" style="display: none;">
+    <div style="margin-bottom: 20px;">
+      <button class="btn-cancel" onclick="showOverview()" style="color: var(--text-main); font-weight: bold;">&#8592; Back to Fleet Overview</button>
+    </div>
+    <div id="detailed-panels-container">
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

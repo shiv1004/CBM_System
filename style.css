@@ -1,0 +1,97 @@
+:root {
+  --bg-color: #050505; 
+  --panel-bg: #0f0f0f; 
+  --card-bg: #161616;  
+  --text-main: #ededed; 
+  --text-muted: #808080; 
+  --accent: #00e5ff; 
+  --border: #262626; 
+  --success: #00fa9a; 
+  --warning: #ff8c00; /* Safety Orange */
+  --danger: #ff4040;  /* Strict Emergency Red */
+}
+
+body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
+
+header { display: flex; justify-content: space-between; align-items: center; background-color: var(--panel-bg); padding: 15px 30px; border-bottom: 1px solid var(--border); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+header h1 { margin: 0; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; }
+.add-btn { background-color: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; transition: 0.2s; }
+.add-btn:hover { background-color: var(--accent); color: #000; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
+
+.dashboard-container { padding: 30px; max-width: 1200px; margin: auto; animation: fadeIn 0.3s; }
+.switchgear-panel { background-color: var(--panel-bg); border: 1px solid var(--border); border-radius: 12px; padding: 25px; margin-bottom: 30px; animation: fadeIn 0.5s; position: relative; box-shadow: 0 8px 16px rgba(0,0,0,0.4); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.panel-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; align-items: center; }
+.panel-header h2 { margin: 0; font-size: 20px; color: var(--text-main); letter-spacing: 1px; }
+.mac-id { font-size: 13px; color: var(--text-muted); font-family: monospace; margin-left: 15px; background: #000; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border);}
+.status-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; background: rgba(0, 250, 154, 0.1); color: var(--success); border: 1px solid rgba(0, 250, 154, 0.3); }
+
+/* Removed red from offline state entirely. It is now neutral grey for Comms Loss. */
+.status-badge.offline { background: rgba(128, 128, 128, 0.1); color: var(--text-muted); border: 1px solid rgba(128, 128, 128, 0.3); }
+
+/* Removed red from the delete button. */
+.btn-delete { background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer; margin-right: 15px; margin-left: auto; transition: 0.2s;}
+.btn-delete:hover { background: #222; color: var(--text-main); border-color: var(--text-main); }
+
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+.summary-card { background: var(--panel-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.summary-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 229, 255, 0.15); }
+.summary-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 15px; }
+.summary-health { font-size: 40px; font-weight: bold; font-family: monospace; text-align: center; margin: 20px 0; transition: 0.3s; }
+
+.section-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin: 25px 0 10px 0; border-bottom: 1px dashed var(--border); padding-bottom: 5px; }
+
+.grid-top { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 20px; }
+.grid-bottom { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin-bottom: 10px; }
+
+.card { background: var(--card-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--border); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: 0.2s; cursor: pointer; }
+.card:hover { border-color: var(--text-muted); background: #1a1a1a; transform: translateY(-2px); }
+#advice-box { cursor: default; }
+#advice-box:hover { border-color: var(--border); background: var(--card-bg); transform: none; }
+
+.card h3 { color: var(--text-muted); font-size: 12px; text-transform: uppercase; margin: 0 0 10px 0; letter-spacing: 1px;}
+.data-val { font-size: 30px; font-weight: bold; font-family: monospace; text-shadow: 0 0 8px rgba(255,255,255,0.1); }
+#advice-box { justify-content: center; align-items: flex-start; text-align: left; }
+.advice-text { font-size: 18px; font-weight: 500; color: var(--warning); margin-top: 10px; }
+.unit { font-size: 16px; color: var(--text-muted); font-weight: normal; }
+
+.relay-control-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+.relay-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; margin-bottom: 4px; border-bottom: 1px dashed transparent; transition: 0.2s; border-radius: 6px; }
+.relay-row:hover { background: rgba(255,255,255,0.02); }
+
+/* --- DRAG & DROP AND PRIORITY COLUMNS --- */
+.drag-handle { cursor: grab; color: #555; font-size: 18px; padding-right: 15px; user-select: none; }
+.drag-handle:active { cursor: grabbing; color: var(--accent); }
+.sortable-row.dragging { opacity: 0.4; background: rgba(255,255,255,0.1); border: 1px dashed var(--accent); }
+
+.priority-col { width: 140px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+.editable-label { background: transparent; border: 1px dashed transparent; color: var(--text-main); font-size: 15px; font-family: inherit; width: 100%; margin: 0 15px; padding: 8px; transition: 0.2s; border-radius: 4px;}
+.editable-label:hover, .editable-label:focus { border-color: var(--border); background: #0a0a0a; outline: none; }
+
+/* The Red var(--danger) is ONLY used for TRIPPED states here */
+.breaker-switch { position: relative; display: inline-block; width: 125px; height: 32px; border-radius: 4px; flex-shrink: 0;}
+.breaker-switch input { opacity: 0; width: 0; height: 0; }
+.breaker-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #111; transition: .3s; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; letter-spacing: 1px; color: var(--danger); border: 1px solid var(--danger); border-radius: 4px; box-shadow: inset 0 0 12px rgba(255, 64, 64, 0.2); }
+.breaker-slider::before { content: "TRIPPED"; }
+
+input:checked + .breaker-slider { background-color: #111; border-color: var(--success); color: var(--success); box-shadow: inset 0 0 12px rgba(0, 250, 154, 0.2); }
+input:checked + .breaker-slider::before { content: "ENERGIZED"; }
+.breaker-slider:hover { filter: brightness(1.3); }
+
+/* Modals & Charts */
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 1000; justify-content: center; align-items: center; }
+.modal-box { background: var(--panel-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border); width: 350px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+.modal-box h3 { margin-top: 0; margin-bottom: 20px; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px; }
+.modal-box label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;}
+.modal-box input { width: 90%; padding: 10px; margin-bottom: 20px; background: #000; border: 1px solid var(--border); color: white; border-radius: 6px; font-family: monospace;}
+.modal-box input:focus { outline: none; border-color: var(--accent); }
+.btn-row { display: flex; justify-content: space-between; }
+.btn-cancel { background: transparent; color: var(--text-muted); border: 1px solid var(--border); padding: 10px 15px; border-radius: 6px; cursor: pointer; transition: 0.2s; font-weight: bold;}
+.btn-cancel:hover { background: #1a1a1a; color: var(--text-main);}
+
+.chart-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.timeframe-selector { display: flex; gap: 5px; background: #000; padding: 4px; border-radius: 6px; border: 1px solid var(--border); }
+.tf-btn { background: transparent; border: none; color: var(--text-muted); padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.2s; }
+.tf-btn:hover { color: var(--text-main); }
+.tf-btn.active { background: var(--border); color: var(--text-main); }
